@@ -1,97 +1,73 @@
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle, ExternalLink } from 'lucide-react';
-import { CHECKOUT_WEBSITE_URL } from './constants';
-
-interface FaqItem {
-  question: string;
-  answer: string;
-}
+import { ChevronDown } from 'lucide-react';
 
 export const FaqSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const faqs: FaqItem[] = [
+  const faqs = [
     {
-      question: 'Does requesting a loan on Credo Bazaar damage my CIBIL score?',
-      answer:
-        'No. Credo Bazaar utilizes an initial AI soft eligibility match that has zero negative impact on your credit bureau score. Unlike offline DSAs who submit physical files across multiple branches triggering hard credit inquiries, your credit profile remains fully protected until you personally select and accept your preferred lender sanction.',
+      q: 'How quickly will I receive the loan money?',
+      a: 'Once your quick online application and mobile OTP verification are completed, funds are transferred directly into your bank account within 15 minutes to 24 hours.',
     },
     {
-      question: 'Are there any upfront fees or hidden charges for borrowers?',
-      answer:
-        'No. Credo Bazaar is 100% free for borrowers. We never charge file-login fees, upfront advisory charges, or hidden consulting commissions. Any official lender processing fees are clearly detailed on your formal sanction letter.',
+      q: 'Will checking my offers affect my CIBIL credit score?',
+      a: 'No, not at all! Checking your loan options on Credo Bazaar is a soft check that leaves your CIBIL score completely untouched.',
     },
     {
-      question: 'I already have a DSA or local broker working on my loan. Can I still use Credo Bazaar?',
-      answer:
-        'Yes, absolutely. There is zero exclusivity. You can use Credo Bazaar as a transparent parallel benchmark. If our network of 50+ institutional banks and NBFCs offers you lower interest rates, better tenure, or higher sanction amounts, you are free to choose the superior option.',
+      q: 'What is the minimum income required to apply?',
+      a: 'A minimum net income of ₹15,000 per month is required, whether you are a salaried employee or self-employed.',
     },
     {
-      question: 'How many banks and NBFCs will review my loan request?',
-      answer:
-        'Credo Bazaar is connected with over 50+ institutional lenders, including leading PSU banks, private sector banks, and top NBFCs. Our matching algorithm automatically routes your requirement to institutions whose active underwriting criteria best fit your financial profile.',
+      q: 'What interest rates and repayment tenures are available?',
+      a: 'Interest rates start as low as 10.49% p.a. with flexible repayment tenures from 1 to 5 years (12 to 60 months).',
     },
     {
-      question: 'How quickly can I get loan sanction and disbursal?',
-      answer:
-        'Pre-qualified match indications are generated in real-time. For standard business and MSME loans, formal institutional sanctions are typically delivered within 24 to 72 hours, with fund disbursal directly following digital verification and documentation.',
+      q: 'What documents do I need to submit?',
+      a: 'Zero physical paperwork is needed. You only need your PAN card, Aadhaar for mobile OTP verification, and your last 3 months’ bank statement.',
     },
     {
-      question: 'How is my financial and personal data protected?',
-      answer:
-        'All documents and sensitive financial identifiers (PAN, Aadhaar, GST, bank statements) are encrypted using bank-grade 256-bit encryption. Credo Bazaar strictly complies with RBI Digital Lending Guidelines and the Digital Personal Data Protection (DPDP) Act 2023. We never share your data via unencrypted channels like WhatsApp.',
+      q: 'Can I repay or close my loan early?',
+      a: 'Yes, our partner lenders provide easy prepayment and foreclosure options after the initial lock-in period, helping you save on interest.',
     },
   ];
 
-  const toggleFaq = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggle = (idx: number) => {
+    setOpenIndex(openIndex === idx ? null : idx);
   };
 
   return (
-    <section id="faq" className="cb-section">
+    <section id="faq" className="cb-section cb-faq-section">
       <div className="cb-container">
         {/* Section Header */}
         <div className="cb-section-header">
           <div className="cb-pill cb-pill-blue">
-            <HelpCircle size={14} />
-            <span>Got Questions?</span>
+            <span>FAQs</span>
           </div>
           <h2 className="cb-section-title">Frequently Asked Questions</h2>
           <p className="cb-section-subtitle">
-            Everything you need to know about requesting a loan through Credo Bazaar.
+            Quick, clear answers to common questions about your loan, interest rates, and disbursal.
           </p>
         </div>
 
-        {/* FAQ Accordion List */}
-        <div className="cb-faq-list">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
+        {/* FAQ Accordion */}
+        <div className="cb-faq-accordion">
+          {faqs.map((faq, idx) => {
+            const isOpen = openIndex === idx;
             return (
               <div
-                key={index}
-                className={`cb-faq-item ${isOpen ? 'open' : ''}`}
+                key={idx}
+                className={`cb-faq-item ${isOpen ? 'active' : ''}`}
+                onClick={() => toggle(idx)}
               >
-                <button
-                  type="button"
-                  className="cb-faq-question"
-                  onClick={() => toggleFaq(index)}
-                  aria-expanded={isOpen}
-                >
-                  <span>{faq.question}</span>
-                  <ChevronDown
-                    size={20}
-                    className="cb-faq-icon"
-                    style={{
-                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                      transition: 'transform var(--cb-transition-fast)',
-                      flexShrink: 0,
-                    }}
-                  />
-                </button>
-
+                <div className="cb-faq-question">
+                  <span>{faq.q}</span>
+                  <div className={`cb-faq-arrow ${isOpen ? 'open' : ''}`}>
+                    <ChevronDown size={18} />
+                  </div>
+                </div>
                 {isOpen && (
                   <div className="cb-faq-answer">
-                    <p>{faq.answer}</p>
+                    <p>{faq.a}</p>
                   </div>
                 )}
               </div>
@@ -99,20 +75,21 @@ export const FaqSection: React.FC = () => {
           })}
         </div>
 
-        {/* Bottom CTA in FAQ */}
-        <div style={{ textAlign: 'center', marginTop: '36px' }}>
+        {/* Have more questions? Checkout Website Action Button in Centre */}
+        <div className="cb-faq-more-help-wrap">
           <a
-            href={CHECKOUT_WEBSITE_URL}
+            href="https://www.creditgenai.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="cb-btn cb-btn-secondary"
-            style={{ padding: '12px 28px', fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+            className="cb-faq-checkout-website-btn"
           >
             <span>Have more questions? Checkout Website</span>
-            <ExternalLink size={16} />
+            <span aria-hidden="true">→</span>
           </a>
         </div>
       </div>
     </section>
   );
 };
+
+export default FaqSection;

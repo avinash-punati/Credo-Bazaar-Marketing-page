@@ -6,7 +6,6 @@ import {
   ShieldCheck,
   Calendar,
   Building2,
-  Sparkles,
   ArrowUpRight,
   IndianRupee,
 } from 'lucide-react';
@@ -19,7 +18,7 @@ export const DisbursementHistorySection: React.FC = () => {
     {
       id: 'approved',
       title: 'Total Loans Approved',
-      value: '500+',
+      value: '90+',
       growth: '+142% YoY',
       icon: CheckCircle2,
       accent: '#2563eb',
@@ -29,7 +28,7 @@ export const DisbursementHistorySection: React.FC = () => {
     {
       id: 'customers',
       title: 'Total Customers Served',
-      value: '1000+',
+      value: '100+',
       growth: 'Pan-India',
       icon: Users,
       accent: '#059669',
@@ -39,7 +38,7 @@ export const DisbursementHistorySection: React.FC = () => {
     {
       id: 'disbursed',
       title: 'Total Amount Disbursed',
-      value: '₹20+ Cr',
+      value: '₹10+ Cr',
       growth: 'Institutional',
       icon: IndianRupee,
       accent: '#d97706',
@@ -76,8 +75,8 @@ export const DisbursementHistorySection: React.FC = () => {
   const productHistory = [
     {
       product: 'Personal Loans',
-      totalDisbursed: '₹540+ Crores',
-      totalApproved: '31,200+ Loans',
+      totalDisbursed: '₹4+ Crores',
+      totalApproved: '31+ Loans',
       avgSanction: '24 – 48 Hours',
       rateBenchmark: 'From 10.49%* p.a.',
       ticketSize: 'Up to ₹50 Lakhs',
@@ -85,8 +84,8 @@ export const DisbursementHistorySection: React.FC = () => {
     },
     {
       product: 'Home Loans',
-      totalDisbursed: '₹620+ Crores',
-      totalApproved: '8,400+ Loans',
+      totalDisbursed: '₹3+ Crores',
+      totalApproved: '31+ Loans',
       avgSanction: '3 – 5 Days',
       rateBenchmark: 'From 8.35%* p.a.',
       ticketSize: 'Up to ₹10+ Crores',
@@ -94,8 +93,8 @@ export const DisbursementHistorySection: React.FC = () => {
     },
     {
       product: 'Business Loans',
-      totalDisbursed: '₹480+ Crores',
-      totalApproved: '14,300+ Loans',
+      totalDisbursed: '₹2+ Crores',
+      totalApproved: '7+ Loans',
       avgSanction: '48 – 72 Hours',
       rateBenchmark: 'From 9.75%* p.a.',
       ticketSize: 'Up to ₹5 Crores',
@@ -103,8 +102,8 @@ export const DisbursementHistorySection: React.FC = () => {
     },
     {
       product: 'Loan Against Property (LAP)',
-      totalDisbursed: '₹210+ Crores',
-      totalApproved: '4,500+ Loans',
+      totalDisbursed: '₹1+ Crores',
+      totalApproved: '3+ Loans',
       avgSanction: '5 – 7 Days',
       rateBenchmark: 'From 8.50%* p.a.',
       ticketSize: 'Up to ₹50+ Crores',
@@ -113,14 +112,10 @@ export const DisbursementHistorySection: React.FC = () => {
   ];
 
   return (
-    <section id="metrics-history" className="cb-section cb-section-alt" style={{ padding: '72px 0' }}>
+    <section id="metrics-history" className="cb-section cb-section-alt">
       <div className="cb-container">
         {/* Section Header */}
-        <div className="cb-section-header" style={{ marginBottom: '40px' }}>
-          <div className="cb-pill cb-pill-blue">
-            <Sparkles size={14} />
-            <span>Proven Track Record</span>
-          </div>
+        <div className="cb-section-header">
           <h2 className="cb-section-title">
             Our Disbursement &amp; Approval History
           </h2>
@@ -135,7 +130,7 @@ export const DisbursementHistorySection: React.FC = () => {
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '20px',
-            marginBottom: '40px',
+            marginBottom: '28px',
           }}
           className="metrics-counter-grid"
         >
@@ -160,6 +155,7 @@ export const DisbursementHistorySection: React.FC = () => {
                 {/* Header row with icon & badge */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
                   <div
+                    className="metric-counter-icon"
                     style={{
                       width: '46px',
                       height: '46px',
@@ -174,6 +170,7 @@ export const DisbursementHistorySection: React.FC = () => {
                     <Icon size={24} />
                   </div>
                   <span
+                    className="metric-counter-badge"
                     style={{
                       fontSize: '0.72rem',
                       fontWeight: 700,
@@ -194,6 +191,7 @@ export const DisbursementHistorySection: React.FC = () => {
 
                 {/* Big Stat Value */}
                 <div
+                  className="metric-counter-value"
                   style={{
                     fontSize: '2rem',
                     fontWeight: 800,
@@ -206,11 +204,17 @@ export const DisbursementHistorySection: React.FC = () => {
                   {item.value}
                 </div>
 
-                <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}>
+                <div
+                  className="metric-counter-title"
+                  style={{ fontSize: '0.9rem', fontWeight: 700, color: '#334155', marginBottom: '4px' }}
+                >
                   {item.title}
                 </div>
 
-                <div style={{ fontSize: '0.78rem', color: '#64748b', lineHeight: 1.45 }}>
+                <div
+                  className="metric-counter-subtext"
+                  style={{ fontSize: '0.78rem', color: '#64748b', lineHeight: 1.45 }}
+                >
                   {item.subtext}
                 </div>
               </div>

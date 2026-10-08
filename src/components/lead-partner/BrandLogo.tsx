@@ -102,6 +102,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
               display: 'flex',
               alignItems: 'baseline',
               gap: '4px',
+              whiteSpace: 'nowrap',
             }}
           >
             <span>Credo</span>
@@ -112,12 +113,14 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
             <span
               style={{
                 fontFamily: 'var(--cb-font-body)',
-                fontSize: size === 'sm' ? '0.68rem' : '0.72rem',
+                fontSize: size === 'sm' ? '0.68rem' : size === 'lg' ? '0.76rem' : '0.72rem',
                 fontWeight: 600,
-                letterSpacing: '0.04em',
+                letterSpacing: size === 'lg' ? '0.06em' : '0.05em',
                 textTransform: 'uppercase',
                 color: variant === 'light' ? '#94a3b8' : 'var(--cb-text-muted)',
                 marginTop: '2px',
+                whiteSpace: 'nowrap',
+                display: 'block',
               }}
             >
               Loan Request Platform

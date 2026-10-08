@@ -13,59 +13,64 @@ import {
 
 export const ReferralJourney: React.FC = () => {
   const journeySteps = [
-    { step: 1, label: 'Submit Request', icon: FileEdit, desc: '2-min digital form' },
-    { step: 2, label: 'AI Soft Match', icon: Cpu, desc: 'Zero CIBIL damage' },
-    { step: 3, label: 'Encrypted Docs', icon: Lock, desc: 'DPDP Act protected' },
-    { step: 4, label: 'Multi-Lender Review', icon: Building2, desc: '50+ banks evaluate' },
-    { step: 5, label: 'Compare Offers', icon: Scale, desc: 'Choose best ROI & EMI' },
-    { step: 6, label: 'Digital Sanction', icon: FileCheck, desc: 'Official approval letter' },
-    { step: 7, label: 'Direct Disbursal', icon: Banknote, desc: 'Funds in your account' },
+    { id: 'request', label: 'Submit Request', icon: FileEdit, desc: '2-min digital form', color: '#2563eb', bg: '#eff6ff' },
+    { id: 'match', label: 'AI Soft Match', icon: Cpu, desc: 'Zero CIBIL damage', color: '#2563eb', bg: '#eff6ff' },
+    { id: 'docs', label: 'Encrypted Docs', icon: Lock, desc: 'DPDP Act protected', color: '#7c3aed', bg: '#f5f3ff' },
+    { id: 'review', label: 'Multi-Lender Review', icon: Building2, desc: '50+ banks evaluate', color: '#2563eb', bg: '#eff6ff' },
+    { id: 'compare', label: 'Compare Offers', icon: Scale, desc: 'Choose best ROI & EMI', color: '#0284c7', bg: '#f0f9ff' },
+    { id: 'sanction', label: 'Digital Sanction', icon: FileCheck, desc: 'Official approval letter', color: '#059669', bg: '#ecfdf5' },
+    { id: 'disbursal', label: 'Direct Disbursal', icon: Banknote, desc: 'Funds in your account', color: '#059669', bg: '#ecfdf5' },
   ];
 
   return (
-    <section id="borrower-journey" className="cb-section cb-section-alt">
+    <section id="how-it-works" className="cb-section cb-section-alt">
+      <span id="borrower-journey" style={{ position: 'relative', top: '-80px', display: 'block', visibility: 'hidden' }} />
       <div className="cb-container">
         {/* Section Header */}
         <div className="cb-section-header">
-          <div className="cb-pill cb-pill-blue">
-            <span>Fulfillment Pipeline</span>
+          <div className="cb-pill cb-pill-blue" style={{ marginBottom: '14px' }}>
+            <span>How It Works</span>
           </div>
-          <h2 className="cb-section-title">Your End-to-End Loan Journey</h2>
+          <h2 className="cb-section-title">How Credo Bazaar Works</h2>
           <p className="cb-section-subtitle">
-            Experience complete transparency, institutional security, and speed from initial request to fund disbursal.
+            Experience complete transparency, institutional security, and lightning speed from your initial request to direct bank disbursal.
           </p>
         </div>
 
-        {/* 7-Step Connected Journey */}
+        {/* 7-Step Connected Chain Pipeline */}
         <div className="cb-journey-pipeline">
           {journeySteps.map((item, index) => {
             const Icon = item.icon;
             const isLast = index === journeySteps.length - 1;
             return (
-              <React.Fragment key={item.step}>
+              <React.Fragment key={item.id}>
                 <div className="cb-journey-node">
-                  <div className="cb-journey-step-indicator">{item.step}</div>
                   <div
                     style={{
-                      width: '42px',
-                      height: '42px',
-                      borderRadius: '10px',
-                      background: isLast ? 'var(--cb-emerald-50)' : 'var(--cb-blue-50)',
-                      color: isLast ? 'var(--cb-emerald-600)' : 'var(--cb-blue-600)',
+                      width: '46px',
+                      height: '46px',
+                      borderRadius: '12px',
+                      background: item.bg,
+                      color: item.color,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
+                      marginBottom: '2px',
+                      border: `1px solid ${item.color}25`,
                     }}
                   >
-                    <Icon size={20} />
+                    <Icon size={22} />
                   </div>
                   <span className="cb-journey-node-title">{item.label}</span>
                   <span className="cb-journey-node-desc">{item.desc}</span>
                 </div>
 
                 {!isLast && (
-                  <div className="cb-journey-connector">
-                    <ChevronRight size={18} color="var(--cb-border)" />
+                  <div className="cb-journey-line-connector" aria-hidden="true">
+                    <span className="cb-line-track" />
+                    <span className="cb-line-arrow">
+                      <ChevronRight size={13} strokeWidth={2.5} />
+                    </span>
                   </div>
                 )}
               </React.Fragment>

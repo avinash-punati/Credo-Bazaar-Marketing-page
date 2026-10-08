@@ -3,69 +3,57 @@ import '../components/lead-partner/LeadPartner.css';
 import {
   MarketingHeader,
   LeadPartnerHero,
-  DisbursementHistorySection,
-  BorrowerProcedureWalkthrough,
-  ProcessTimeline,
-  WhyNotJustDSA,
-  BorrowerBenefits,
-  LoanProductsSection,
-  ConversationDemo,
-  ReferralJourney,
-  MarketingSection,
+  IncredFeaturesSection,
+  IncredEligibilityDocsSection,
+  IncredStepsSection,
+  CreditScoreSection,
+  CustomerTestimonials,
   FaqSection,
-  LeadPartnerCTA,
+  CredoAppDownloadSection,
   MarketingFooter,
+  MobileFloatingCTA,
 } from '../components/lead-partner';
 
 export const LeadPartnerPage: React.FC = () => {
   return (
     <div
       className="cb-page-lead-partner"
-      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#ffffff' }}
     >
-      {/* Sticky Header Navigation */}
+      {/* Sticky Marketing Header Navigation */}
       <MarketingHeader />
 
       <main style={{ flex: 1 }}>
-        {/* 1. Hero — Borrower Value Proposition & Live Demo */}
+        {/* Screen 1: InCred Personal Loan Hero with Interactive Eligibility Form */}
         <LeadPartnerHero />
 
-        {/* 2. Track Record & Disbursement History (Total Loans Approved, Customers, Disbursed) */}
-        <DisbursementHistorySection />
+        {/* Screen 2: Why Choose Us (6-Card 2x3 Grid) */}
+        <IncredFeaturesSection />
 
-        {/* 3. Complete Step-by-Step Borrower Procedure on CreditGenAI with Real Screenshots */}
-        <BorrowerProcedureWalkthrough />
+        {/* Screen 4: Eligibility Criteria & Documentation Required */}
+        <IncredEligibilityDocsSection />
 
-        {/* 4. How Getting a Loan Works — 5-Step Process */}
-        <ProcessTimeline />
+        {/* Screen 5: Steps to Apply for Instant Personal Loan (5-Step Chevron Stepper) */}
+        <IncredStepsSection />
 
-        {/* 5. Already Have a DSA? — Persuasion & Pitfalls */}
-        <WhyNotJustDSA />
+        {/* Screen 6: Check Your Credit Score For Free (Experian) */}
+        <CreditScoreSection />
 
-        {/* 6. Borrower Benefits & Side-by-Side Comparison */}
-        <BorrowerBenefits />
+        {/* Screen 7: Customer Success Stories & Social Proof */}
+        <CustomerTestimonials />
 
-        {/* 7. Comprehensive Loan Solutions / Products (Personal, Home, Business, LAP) */}
-        <LoanProductsSection />
-
-        {/* 8. Real Scenario — Borrower Consultation Demonstration */}
-        <ConversationDemo />
-
-        {/* 9. Borrower Loan Fulfillment Journey (7 Steps) */}
-        <ReferralJourney />
-
-        {/* 10. Institutional Power Banner */}
-        <MarketingSection />
-
-        {/* 11. Borrower FAQ */}
+        {/* Screen 8: Frequently Asked Questions (Borrower FAQs) */}
         <FaqSection />
 
-        {/* 12. Final Conversion CTA */}
-        <LeadPartnerCTA />
+        {/* Screen 9: Download Credo Bazaar Mobile App (Available on Playstore and iOS store) */}
+        <CredoAppDownloadSection />
       </main>
 
-      {/* Regulatory Notice & Footer */}
+      {/* Screen 10: Regulatory Notice, Banking Disclosures & Clean Footer */}
       <MarketingFooter />
+
+      {/* Sticky Mobile Floating Fast-Track CTA */}
+      <MobileFloatingCTA />
     </div>
   );
 };

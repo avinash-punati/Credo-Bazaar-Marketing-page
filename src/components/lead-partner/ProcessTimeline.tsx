@@ -45,9 +45,7 @@ export const ProcessTimeline: React.FC = () => {
       <div className="cb-container">
         {/* Section Header */}
         <div className="cb-section-header">
-          <div className="cb-pill cb-pill-blue">
-            <span>Seamless Borrower Journey</span>
-          </div>
+
           <h2 className="cb-section-title">How Getting a Loan Works on Credo Bazaar</h2>
           <p className="cb-section-subtitle">
             A transparent, 5-step digital path from loan request to institutional fund disbursal.

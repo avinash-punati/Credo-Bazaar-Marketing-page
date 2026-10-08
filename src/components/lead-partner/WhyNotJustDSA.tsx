@@ -15,73 +15,78 @@ export const WhyNotJustDSA: React.FC = () => {
       icon: AlertTriangle,
       color: '#ef4444',
       bg: '#fef2f2',
-      title: 'Your DSA Only Shows You Their Preferred Banks',
-      desc: 'Most individual DSAs are empaneled with only 2–4 specific banks. They recommend lenders that pay them the highest agent commission—not the lender that gives you the best interest rate or fastest processing.',
+      title: 'Limited to 2–3 Preferred Banks',
+      desc: 'Agents push lenders that pay them the highest broker commission, not the lender offering you the best interest rate.',
     },
     {
       icon: TrendingDown,
       color: '#f59e0b',
       bg: '#fffbeb',
-      title: 'Your CIBIL Score is at Risk',
-      desc: 'DSAs often circulate your physical file across multiple branches simultaneously without your knowledge. Each bank triggers a hard credit inquiry, silently damaging your CIBIL score before you even receive an offer.',
+      title: 'Uncontrolled CIBIL Inquiries',
+      desc: 'DSAs circulate files across branches at once, triggering multiple hard inquiries that quietly lower your credit score.',
     },
     {
       icon: Lock,
       color: '#7c3aed',
       bg: '#f5f3ff',
-      title: 'Your Documents Travel Unsafely',
-      desc: 'PAN, Aadhaar, ITR, bank statements, and GST documents get photocopied in offices and shared across WhatsApp groups. Once shared, you lose all control over who accesses your most sensitive financial information.',
+      title: 'Unsafe Document Handling',
+      desc: 'PAN, Aadhaar, and ITR documents get photocopied and forwarded on WhatsApp groups with zero data privacy.',
     },
     {
       icon: Clock,
       color: '#0369a1',
       bg: '#eff6ff',
-      title: 'False Timelines & Silent Rejections',
-      desc: 'DSAs routinely promise "approval by Monday" to retain clients, while your application sits unprocessed. Three weeks later you discover a quiet rejection, and now your credit score has taken hits, losing valuable time.',
+      title: 'False Promises & Weeks of Delay',
+      desc: 'Verbal promises drag out for weeks without visibility, often ending in surprise rejections and lost time.',
     },
   ];
 
   const credo_advantages = [
     {
       icon: CheckCircle2,
-      text: 'One submission reaches multiple institutional lenders simultaneously',
+      text: '50+ institutional lenders evaluated simultaneously in 2 minutes',
     },
     {
       icon: CheckCircle2,
-      text: 'Borrower-first platform — no agent commission bias in lender matching',
+      text: 'Soft credit evaluation with zero impact on your CIBIL score',
     },
     {
       icon: CheckCircle2,
-      text: 'DPDP Act & RBI Digital Lending Guideline compliant data handling',
+      text: 'Bank-grade 256-bit encryption compliant with RBI & DPDP Act',
     },
     {
       icon: CheckCircle2,
-      text: 'Full digital status trail — no mystery, no "check with the branch" calls',
+      text: 'Live digital status tracking with complete transparency',
     },
     {
       icon: CheckCircle2,
-      text: 'Use as your safety net alongside any existing DSA — zero exclusivity',
-    },
-    {
-      icon: CheckCircle2,
-      text: '100% free for borrowers — no file-login fees or hidden charges',
+      text: '100% free service for borrowers with zero broker markups',
     },
   ];
 
   return (
-    <section id="why-credo" className="cb-section" style={{ background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)', padding: '80px 0' }}>
+    <section
+      id="why-credo"
+      className="cb-section cb-section-alt"
+      style={{
+        background: '#ffffff',
+        padding: '36px 0',
+        borderLeft: '3.5px solid #0ea5e9',
+        boxSizing: 'border-box',
+      }}
+    >
       <div className="cb-container">
         {/* Section Header */}
-        <div className="cb-section-header" style={{ marginBottom: '52px' }}>
-          <div className="cb-pill" style={{ background: 'rgba(239,68,68,0.15)', color: '#f87171', border: '1px solid rgba(239,68,68,0.25)' }}>
+        <div className="cb-section-header">
+          <div className="cb-pill" style={{ background: '#fef2f2', color: '#dc2626', border: '1px solid #fecaca' }}>
             <ShieldAlert size={14} />
-            <span>Already Talking to a DSA?</span>
+            <span>Already Talking to a Agent?</span>
           </div>
-          <h2 className="cb-section-title" style={{ color: '#ffffff' }}>
+          <h2 className="cb-section-title" style={{ color: '#0f172a' }}>
             Before You Decide, Know What You're Missing
           </h2>
-          <p className="cb-section-subtitle" style={{ color: '#94a3b8', maxWidth: '680px' }}>
-            If a loan agent or DSA is already handling your request, they might be working in their interest, not yours. Here's what traditional offline channels won't tell you.
+          <p className="cb-section-subtitle" style={{ color: '#64748b' }}>
+            If a loan agent is already handling your request, they might be working in their interest, not yours. Here's what traditional offline channels won't tell you.
           </p>
         </div>
 
@@ -91,7 +96,7 @@ export const WhyNotJustDSA: React.FC = () => {
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
             gap: '20px',
-            marginBottom: '52px',
+            marginBottom: '28px',
           }}
           className="dsa-problems-grid"
         >
@@ -101,14 +106,15 @@ export const WhyNotJustDSA: React.FC = () => {
               <div
                 key={i}
                 style={{
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  background: '#f8fafc',
+                  border: '1px solid #e2e8f0',
                   borderRadius: '16px',
                   padding: '24px',
                   display: 'flex',
                   gap: '18px',
                   alignItems: 'flex-start',
                   transition: 'all 0.25s ease',
+                  boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
                 }}
                 className="dsa-problem-card"
               >
@@ -128,10 +134,10 @@ export const WhyNotJustDSA: React.FC = () => {
                   <Icon size={22} />
                 </div>
                 <div>
-                  <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#f1f5f9', marginBottom: '8px', lineHeight: 1.3 }}>
+                  <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f172a', marginBottom: '8px', lineHeight: 1.3 }}>
                     {prob.title}
                   </h4>
-                  <p style={{ fontSize: '0.875rem', color: '#94a3b8', lineHeight: 1.65 }}>
+                  <p style={{ fontSize: '0.875rem', color: '#475569', lineHeight: 1.65 }}>
                     {prob.desc}
                   </p>
                 </div>
@@ -143,26 +149,27 @@ export const WhyNotJustDSA: React.FC = () => {
         {/* The Switch Card */}
         <div
           style={{
-            background: 'linear-gradient(135deg, rgba(37,99,235,0.15) 0%, rgba(16,185,129,0.08) 100%)',
-            border: '1px solid rgba(37,99,235,0.25)',
+            background: 'linear-gradient(135deg, #eff6ff 0%, #ecfdf5 100%)',
+            border: '1px solid #bfdbfe',
             borderRadius: '20px',
             padding: '36px 40px',
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: '40px',
             alignItems: 'center',
+            boxShadow: '0 8px 24px rgba(37, 99, 235, 0.06)',
           }}
           className="dsa-vs-credo-card"
         >
           <div>
-            <div className="cb-pill cb-pill-dark" style={{ marginBottom: '16px' }}>
+            <div className="cb-pill cb-pill-blue" style={{ marginBottom: '16px' }}>
               <Zap size={14} />
               <span>The Smarter Way</span>
             </div>
-            <h3 style={{ fontSize: '1.7rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.25, marginBottom: '12px' }}>
+            <h3 style={{ fontSize: '1.7rem', fontWeight: 800, color: '#0f172a', lineHeight: 1.25, marginBottom: '12px' }}>
               You Don't Have to Choose.<br />Use Credo Bazaar as Your Safety Net.
             </h3>
-            <p style={{ fontSize: '0.975rem', color: '#94a3b8', lineHeight: 1.65, margin: 0 }}>
+            <p style={{ fontSize: '0.975rem', color: '#475569', lineHeight: 1.65, margin: 0 }}>
               Keep your existing DSA conversations open. Submit your loan request on Credo Bazaar in under 3 minutes as a parallel digital track. If our lending partners offer better terms, faster processing, or higher approval probability — you simply go with the superior option.
             </p>
           </div>
@@ -177,13 +184,15 @@ export const WhyNotJustDSA: React.FC = () => {
                     display: 'flex',
                     alignItems: 'flex-start',
                     gap: '12px',
-                    background: 'rgba(255,255,255,0.04)',
+                    background: '#ffffff',
+                    border: '1px solid #e2e8f0',
                     borderRadius: '10px',
                     padding: '12px 16px',
+                    boxShadow: '0 2px 6px rgba(15, 23, 42, 0.03)',
                   }}
                 >
-                  <Icon size={18} color="#34d399" style={{ flexShrink: 0, marginTop: '1px' }} />
-                  <span style={{ fontSize: '0.875rem', color: '#e2e8f0', lineHeight: 1.45 }}>{adv.text}</span>
+                  <Icon size={18} color="#059669" style={{ flexShrink: 0, marginTop: '1px' }} />
+                  <span style={{ fontSize: '0.875rem', color: '#1e293b', lineHeight: 1.45, fontWeight: 500 }}>{adv.text}</span>
                 </div>
               );
             })}

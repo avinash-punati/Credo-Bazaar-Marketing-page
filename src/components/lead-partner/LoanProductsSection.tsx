@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-  Sparkles,
-  ShieldCheck,
   CheckCircle2,
   Building,
 } from 'lucide-react';
@@ -18,7 +16,6 @@ export const LoanProductsSection: React.FC = () => {
       isImage: true,
       title: 'Personal Loan',
       subtitle: 'Personal Loan with Instant Approval',
-      desc: 'Quick funds for your needs, anytime, anywhere. Get personal loans with easy process, minimal paperwork, and fast approval.',
       amount: 'Up to ₹50 Lakhs',
       rate: 'From 10.49%* p.a.',
       tenure: '12 – 60 Months',
@@ -32,7 +29,6 @@ export const LoanProductsSection: React.FC = () => {
       isImage: true,
       title: 'Home Loan',
       subtitle: 'Home Loan with Lowest Interest',
-      desc: 'Turn your dream home into reality with competitive interest rates, flexible repayment tenures, and end-to-end guidance.',
       amount: 'Up to ₹10+ Crores',
       rate: 'From 8.35%* p.a.',
       tenure: 'Up to 30 Years',
@@ -46,7 +42,6 @@ export const LoanProductsSection: React.FC = () => {
       isImage: true,
       title: 'Business Loans',
       subtitle: 'Collateral-Free MSME & Growth Capital',
-      desc: 'Fuel your enterprise expansion, inventory acquisition, and working capital needs with customized business financing.',
       amount: 'Up to ₹5 Crores',
       rate: 'From 9.75%* p.a.',
       tenure: '12 – 60 Months',
@@ -60,7 +55,6 @@ export const LoanProductsSection: React.FC = () => {
       isImage: false,
       title: 'Loan Against Property',
       subtitle: 'Loan Against Property with Flexible Tenures',
-      desc: 'Unlock the high financial value of your residential or commercial real estate at lower commercial interest rates.',
       amount: 'Up to ₹50+ Crores',
       rate: 'From 8.50%* p.a.',
       tenure: 'Up to 15 Years',
@@ -74,24 +68,20 @@ export const LoanProductsSection: React.FC = () => {
     <section id="loan-products" className="cb-section">
       <div className="cb-container">
         {/* Section Header */}
-        <div className="cb-section-header">
-          <div className="cb-pill cb-pill-blue">
-            <Sparkles size={14} />
-            <span>Available on CreditGenAI</span>
-          </div>
-          <h2 className="cb-section-title">Featured Loan Products</h2>
+        <div className="cb-section-header" style={{ marginBottom: '28px' }}>
+          <h2 className="cb-section-title">Personal &amp; Home Loan Options</h2>
           <p className="cb-section-subtitle">
-            Explore the exact suite of loan options available on CreditGenAI — offering quick disbursals, high limits, and competitive interest rates.
+            Pre-approved multi-lender offers with lowest interest rates and zero broker markup.
           </p>
         </div>
 
-        {/* 4 Loan Products Grid */}
+        {/* 4 Compact Loan Products Grid */}
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '22px',
-            marginBottom: '44px',
+            gap: '16px',
+            marginBottom: '0px',
           }}
           className="creditgenai-loans-grid"
         >
@@ -103,12 +93,12 @@ export const LoanProductsSection: React.FC = () => {
                 style={{
                   background: '#ffffff',
                   border: prod.isPopular ? '2px solid #2563eb' : '1px solid #e2e8f0',
-                  borderRadius: '20px',
-                  padding: '24px 20px',
+                  borderRadius: '16px',
+                  padding: '16px 14px',
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
-                  boxShadow: prod.isPopular ? '0 10px 25px -5px rgba(37, 99, 235, 0.15)' : '0 2px 12px rgba(15,23,42,0.04)',
+                  boxShadow: prod.isPopular ? '0 8px 20px -4px rgba(37, 99, 235, 0.12)' : '0 2px 8px rgba(15,23,42,0.03)',
                   transition: 'all 0.25s ease',
                 }}
                 className="creditgenai-loan-card"
@@ -118,33 +108,33 @@ export const LoanProductsSection: React.FC = () => {
                   <div
                     style={{
                       position: 'absolute',
-                      top: '-12px',
-                      right: '18px',
+                      top: '-10px',
+                      right: '12px',
                       background: '#2563eb',
                       color: '#ffffff',
-                      fontSize: '0.72rem',
+                      fontSize: '0.68rem',
                       fontWeight: 700,
-                      padding: '3px 10px',
+                      padding: '2px 8px',
                       borderRadius: '999px',
-                      boxShadow: '0 2px 8px rgba(37, 99, 235, 0.3)',
+                      boxShadow: '0 2px 6px rgba(37, 99, 235, 0.3)',
                     }}
                   >
-                    ★ Popular Choice
+                    ★ Popular
                   </div>
                 )}
 
                 {/* Product Icon & Badge */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                   <div
                     style={{
-                      width: '64px',
-                      height: '64px',
-                      borderRadius: '16px',
+                      width: '44px',
+                      height: '44px',
+                      borderRadius: '12px',
                       background: '#f8fafc',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      padding: '8px',
+                      padding: '6px',
                       border: '1px solid #f1f5f9',
                     }}
                   >
@@ -155,17 +145,17 @@ export const LoanProductsSection: React.FC = () => {
                         style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                       />
                     ) : (
-                      Icon && <Icon size={32} color="#0284c7" />
+                      Icon && <Icon size={24} color="#0284c7" />
                     )}
                   </div>
 
                   <span
                     style={{
-                      fontSize: '0.725rem',
+                      fontSize: '0.7rem',
                       fontWeight: 700,
                       color: prod.isPopular ? '#2563eb' : '#0369a1',
                       background: prod.isPopular ? '#eff6ff' : '#f0f9ff',
-                      padding: '4px 10px',
+                      padding: '3px 8px',
                       borderRadius: '999px',
                       border: '1px solid rgba(37, 99, 235, 0.15)',
                     }}
@@ -174,46 +164,42 @@ export const LoanProductsSection: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#0f172a', marginBottom: '4px' }}>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f172a', marginBottom: '2px' }}>
                   {prod.title}
                 </h3>
 
-                <div style={{ fontSize: '0.78rem', color: '#0284c7', fontWeight: 600, marginBottom: '10px' }}>
+                <div style={{ fontSize: '0.74rem', color: '#0284c7', fontWeight: 600, marginBottom: '12px' }}>
                   {prod.subtitle}
                 </div>
-
-                <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5, marginBottom: '16px', flex: 1 }}>
-                  {prod.desc}
-                </p>
 
                 {/* Key Metrics */}
                 <div
                   style={{
                     background: '#f8fafc',
-                    borderRadius: '12px',
-                    padding: '12px',
+                    borderRadius: '10px',
+                    padding: '10px',
                     border: '1px solid #f1f5f9',
-                    marginBottom: '16px',
+                    marginBottom: '12px',
                     display: 'grid',
                     gridTemplateColumns: '1fr 1fr',
-                    gap: '8px',
+                    gap: '6px',
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: '0.67rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 600 }}>Loan Limit</div>
-                    <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#1e293b' }}>{prod.amount}</div>
+                    <div style={{ fontSize: '0.62rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 600 }}>Loan Limit</div>
+                    <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#1e293b' }}>{prod.amount}</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.67rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 600 }}>Interest Rate</div>
-                    <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#059669' }}>{prod.rate}</div>
+                    <div style={{ fontSize: '0.62rem', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 600 }}>Interest Rate</div>
+                    <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#059669' }}>{prod.rate}</div>
                   </div>
                 </div>
 
                 {/* Features list */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
                   {prod.features.map((feat, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#475569' }}>
-                      <CheckCircle2 size={13} color="#10b981" style={{ flexShrink: 0 }} />
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', color: '#475569' }}>
+                      <CheckCircle2 size={12} color="#10b981" style={{ flexShrink: 0 }} />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -221,43 +207,6 @@ export const LoanProductsSection: React.FC = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Real Live Platform Guarantee Callout */}
-        <div
-          style={{
-            background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-            borderRadius: '20px',
-            padding: '28px 32px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '20px',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-          }}
-        >
-          <div
-            style={{
-              width: '48px',
-              height: '48px',
-              borderRadius: '12px',
-              background: 'rgba(56, 189, 248, 0.15)',
-              color: '#38bdf8',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
-            }}
-          >
-            <ShieldCheck size={26} />
-          </div>
-          <div>
-            <h4 style={{ color: '#ffffff', fontSize: '1.15rem', fontWeight: 700, margin: '0 0 4px' }}>
-              Verified Official Products from CreditGenAI
-            </h4>
-            <p style={{ color: '#94a3b8', fontSize: '0.875rem', margin: 0 }}>
-              All 4 products feature digital soft-inquiry pre-qualification, 256-bit encryption, and zero broker markup.
-            </p>
-          </div>
         </div>
       </div>
     </section>

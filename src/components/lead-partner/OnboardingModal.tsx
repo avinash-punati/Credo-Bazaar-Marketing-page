@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, ArrowRight, ShieldCheck, Sparkles, AlertCircle } from 'lucide-react';
+import { X, CheckCircle2, ArrowRight, ShieldCheck, Info, AlertCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface OnboardingModalProps {
@@ -90,7 +90,9 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
         <div className="cb-modal-header">
           <div>
             <div className="cb-pill cb-pill-blue" style={{ fontSize: '0.72rem', marginBottom: '6px' }}>
-              <Sparkles size={12} />
+              <span className="cb-info-icon-badge" aria-hidden="true">
+                <Info size={12} />
+              </span>
               <span>Partner Onboarding</span>
             </div>
             <h3 id="modal-title" style={{ fontSize: '1.35rem', color: 'var(--cb-navy-900)' }}>

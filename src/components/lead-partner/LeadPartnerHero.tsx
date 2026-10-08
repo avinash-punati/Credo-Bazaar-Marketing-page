@@ -1,321 +1,392 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  ExternalLink,
   CheckCircle2,
+  ArrowRight,
+  Lock,
+  Play,
+  X,
+  Info,
+  Send,
+  Landmark,
   ShieldCheck,
-  ChevronDown,
-  Sparkles,
-  AlertTriangle,
-  Building2,
+  FileText,
 } from 'lucide-react';
+import confetti from 'canvas-confetti';
 import { CHECKOUT_WEBSITE_URL } from './constants';
 
 export const LeadPartnerHero: React.FC = () => {
-  const scrollToHowItWorks = () => {
-    const el = document.getElementById('how-it-works');
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [loanAmount, setLoanAmount] = useState<string>('5,00,000');
+  const [mobileNumber, setMobileNumber] = useState<string>('');
+  const [fullName, setFullName] = useState<string>('');
+  const [loanCategory, setLoanCategory] = useState<string>('Personal Loan');
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  const journeySteps = [
+    { id: 1, title: 'Choose Loan' },
+    { id: 2, title: 'Submit Details' },
+    { id: 3, title: 'Verify Mobile' },
+    { id: 4, title: 'Compare Offers' },
+    { id: 5, title: 'Get Approved' },
+  ];
+
+  const loanCategories = [
+    'Personal Loan',
+    'Business Loan',
+    'Home Loan',
+    'Loan Against Property',
+    'Vehicle Loan',
+    'Machinery Loan',
+  ];
+
+  const handleScrollToHowItWorks = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById('how-to-apply') || document.getElementById('how-it-works');
     if (el) {
-      const headerOffset = 80;
-      const elementPosition = el.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const offset = 80;
+      const elPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elPosition + window.pageYOffset - offset;
       window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
 
+  const handleScrollToWhyChoose = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById('why-choose');
+    if (el) {
+      const offset = 73;
+      const elPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  };
+
+  const handleModalSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      try {
+        confetti({
+          particleCount: 65,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      } catch (err) {
+        // ignore
+      }
+    }, 500);
+  };
+
   return (
-    <section className="cb-hero-section" style={{ paddingBottom: '0' }}>
+    <section className="ref-hero-section">
       <div className="cb-container">
-        {/* Top Urgency Banner for Borrowers */}
-        <div
-          style={{
-            background: 'linear-gradient(90deg, #fef3c7 0%, #fff7ed 100%)',
-            border: '1px solid #fde68a',
-            borderRadius: '12px',
-            padding: '12px 20px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            marginBottom: '40px',
-          }}
-        >
-          <AlertTriangle size={18} color="#d97706" style={{ flexShrink: 0 }} />
-          <p style={{ fontSize: '0.875rem', color: '#92400e', margin: 0, lineHeight: 1.5 }}>
-            <strong>Already connected with another DSA or bank?</strong> Traditional agents often route your file only to lenders paying them the highest agent payout.{' '}
-            <a
-              href="#why-credo"
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.getElementById('why-credo');
-                if (el) {
-                  const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
-                  window.scrollTo({ top, behavior: 'smooth' });
-                }
-              }}
-              style={{ color: '#d97706', fontWeight: 700, textDecoration: 'underline', cursor: 'pointer' }}
-            >
-              See why borrowing with Credo Bazaar saves you money &amp; CIBIL score →
-            </a>
-          </p>
-        </div>
-
-        <div className="cb-hero-grid">
-          {/* Left Column: Borrower Value Proposition */}
-          <div className="cb-hero-content animate-fade-in">
-            <div className="cb-pill cb-pill-blue">
-              <Sparkles size={14} />
-              <span>Borrower-First Digital Platform</span>
-            </div>
-
-            <h1 className="cb-hero-title">
-              Get the Best Loan Offers{' '}
-              <span className="cb-hero-title-highlight">Without the DSA Hassle</span>
+        {/* Main 2-Column Hero Layout */}
+        <div className="ref-hero-layout">
+          {/* ================= LEFT COLUMN: HERO HEADLINE & CTAS ================= */}
+          <div className="ref-hero-left">
+            {/* Headline */}
+            <h1 className="ref-hero-title">
+              A Smarter Platform <br />
+              <span className="ref-hero-title-blue">for Your Financial Needs</span>
             </h1>
 
-            <p className="cb-hero-subtitle">
-              One application connects you with 50+ leading banks and NBFCs — with zero agent bias.
+            {/* Subtitle */}
+            <p className="ref-hero-subtitle">
+              One simple platform to discover, compare, and explore financial opportunities that fit your needs.
             </p>
 
-            <p className="cb-hero-desc">
-              Whether you need working capital, MSME business loans, machinery financing, or personal credit, Credo Bazaar puts you in control. Compare transparent sanction offers side-by-side, protect your credit score from uncontrolled inquiries, and enjoy 100% digital processing.
-            </p>
-
-            {/* Borrower Value Points */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '12px',
-                marginBottom: '28px',
-                width: '100%',
-              }}
-            >
-              {[
-                '50+ Banks & NBFCs competing for you',
-                'Soft eligibility match — CIBIL protected',
-                '100% Free for borrowers — zero hidden fees',
-                'DPDP Act & RBI digital lending compliant',
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    fontSize: '0.875rem',
-                    color: '#334155',
-                    fontWeight: 500,
-                  }}
-                >
-                  <CheckCircle2 size={16} color="#10b981" style={{ flexShrink: 0 }} />
-                  <span>{item}</span>
+            {/* 4 Trust Points (Unboxed & Clean) */}
+            <div className="ref-hero-points-row">
+              <div className="ref-hero-point">
+                <div className="ref-point-icon-wrap">
+                  <Landmark size={18} color="#2563eb" />
                 </div>
-              ))}
+                <div className="ref-point-text">
+                  <span className="ref-point-title">50+ Top Banks</span>
+                  <span className="ref-point-desc">Wide lender network</span>
+                </div>
+              </div>
+
+              <div className="ref-hero-point">
+                <div className="ref-point-icon-wrap">
+                  <ShieldCheck size={18} color="#2563eb" />
+                </div>
+                <div className="ref-point-text">
+                  <span className="ref-point-title">Clear &amp; Transparent</span>
+                  <span className="ref-point-desc">No hidden charges</span>
+                </div>
+              </div>
+
+              <div className="ref-hero-point">
+                <div className="ref-point-icon-wrap">
+                  <FileText size={18} color="#2563eb" />
+                </div>
+                <div className="ref-point-text">
+                  <span className="ref-point-title">100% Digital</span>
+                  <span className="ref-point-desc">Fast &amp; paperless</span>
+                </div>
+              </div>
+
+              <div className="ref-hero-point">
+                <div className="ref-point-icon-wrap">
+                  <Lock size={18} color="#2563eb" />
+                </div>
+                <div className="ref-point-text">
+                  <span className="ref-point-title">Safe &amp; Secure</span>
+                  <span className="ref-point-desc">Your data is protected</span>
+                </div>
+              </div>
             </div>
 
-            {/* CTAs: Checkout Website */}
-            <div className="cb-hero-cta-group">
+            {/* Action Buttons Row */}
+            <div className="ref-hero-actions-row">
               <a
                 href={CHECKOUT_WEBSITE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cb-btn cb-btn-primary"
-                id="hero-primary-cta"
-                style={{ padding: '14px 28px', fontSize: '1rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                className="ref-btn-primary"
+                id="hero-start-request-btn"
+                style={{ textDecoration: 'none' }}
               >
-                <span>Checkout Website</span>
-                <ExternalLink size={18} />
+                <span>Apply Now</span>
+                <ArrowRight size={18} />
               </a>
 
-              <button
-                type="button"
-                className="cb-btn cb-btn-secondary"
-                onClick={scrollToHowItWorks}
-                id="hero-secondary-cta"
-                style={{ padding: '14px 24px', fontSize: '0.975rem' }}
+              <a
+                href="#how-to-apply"
+                onClick={handleScrollToHowItWorks}
+                className="ref-btn-secondary"
+                id="hero-how-it-works-btn"
               >
-                <span>See How It Works</span>
-                <ChevronDown size={18} />
-              </button>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="cb-hero-badges" style={{ marginTop: '24px' }}>
-              <div className="cb-hero-badge-item">
-                <CheckCircle2 size={16} />
-                <span>Zero Upfront Fee</span>
-              </div>
-              <div className="cb-hero-badge-item">
-                <ShieldCheck size={16} />
-                <span>DPDP Act Compliant</span>
-              </div>
-              <div className="cb-hero-badge-item">
-                <Building2 size={16} />
-                <span>50+ Partner Lenders</span>
-              </div>
+                <div className="ref-play-circle">
+                  <Play size={12} fill="#2563eb" color="#2563eb" style={{ marginLeft: 2 }} />
+                </div>
+                <span>How It Works</span>
+              </a>
             </div>
           </div>
 
-          {/* Right Column: Borrower Match Preview Card */}
-          <div className="cb-hero-visual animate-slide-up">
-            <div
-              style={{
-                background: '#ffffff',
-                borderRadius: '24px',
-                padding: '28px',
-                boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.12)',
-                border: '1px solid #e2e8f0',
-                position: 'relative',
-              }}
-            >
-              {/* Header */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                <div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#64748b' }}>
-                    Live Request Demonstration
-                  </div>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0f172a', margin: '2px 0 0' }}>
-                    Business Loan Request
-                  </h3>
-                </div>
-                <span
-                  style={{
-                    background: '#ecfdf5',
-                    color: '#059669',
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    padding: '4px 10px',
-                    borderRadius: '999px',
-                    border: '1px solid #a7f3d0',
-                  }}
-                >
-                  ✓ 3 Pre-Sanction Offers
-                </span>
-              </div>
+          {/* ================= RIGHT COLUMN: VISUAL SMARTPHONE & JOURNEY ================= */}
+          <div className="ref-hero-right">
+            <div className="ref-visual-stage">
+              {/* Soft Organic Pastel Sky-Blue Backdrop Blob */}
+              <div className="ref-visual-backdrop-blob" />
 
-              {/* Loan Details summary */}
-              <div
-                style={{
-                  background: '#f8fafc',
-                  borderRadius: '14px',
-                  padding: '14px 16px',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  marginBottom: '20px',
-                  border: '1px solid #f1f5f9',
-                }}
-              >
-                <div>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Requested Amount</div>
-                  <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#0f172a' }}>₹45,00,000</div>
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Purpose</div>
-                  <div style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0f172a' }}>Factory Equipment</div>
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Tenure</div>
-                  <div style={{ fontSize: '0.9rem', fontWeight: 600, color: '#0f172a' }}>48 Months</div>
+              {/* Flying Paper Airplane with Dashed Trail */}
+              <div className="ref-paper-plane-wrap">
+                <svg
+                  className="ref-plane-trail"
+                  width="130"
+                  height="110"
+                  viewBox="0 0 130 110"
+                  fill="none"
+                >
+                  <path
+                    d="M 15 95 C 45 65, 80 85, 105 25"
+                    stroke="#60a5fa"
+                    strokeWidth="2.2"
+                    strokeDasharray="4 4"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <div className="ref-plane-icon">
+                  <Send size={26} color="#2563eb" fill="#2563eb" />
                 </div>
               </div>
 
-              {/* Matched Offers */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
-                {/* Offer 1 */}
-                <div
-                  style={{
-                    border: '1.5px solid #2563eb',
-                    borderRadius: '12px',
-                    padding: '12px 14px',
-                    background: '#eff6ff',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span style={{ fontWeight: 700, color: '#1e3a8a', fontSize: '0.9rem' }}>Tier-1 Private Bank</span>
-                      <span style={{ fontSize: '0.65rem', background: '#2563eb', color: '#fff', padding: '2px 6px', borderRadius: '4px', fontWeight: 600 }}>Best Rate</span>
-                    </div>
-                    <div style={{ fontSize: '0.75rem', color: '#475569', marginTop: '2px' }}>
-                      ROI: <strong style={{ color: '#1e3a8a' }}>9.15% p.a.</strong> • Processing: 0.5%
-                    </div>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1e3a8a' }}>₹1,12,350/mo</div>
-                    <div style={{ fontSize: '0.7rem', color: '#059669', fontWeight: 600 }}>Save ₹1.4L vs DSA</div>
-                  </div>
-                </div>
+              {/* Central Smartphone Mockup */}
+              <div className="ref-phone-frame">
+                <div className="ref-phone-screen">
+                  {/* Phone Speaker Notch */}
+                  <div className="ref-phone-notch" />
 
-                {/* Offer 2 */}
-                <div
-                  style={{
-                    border: '1px solid #e2e8f0',
-                    borderRadius: '12px',
-                    padding: '12px 14px',
-                    background: '#ffffff',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <div>
-                    <div style={{ fontWeight: 600, color: '#334155', fontSize: '0.9rem' }}>Leading PSU Bank</div>
-                    <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '2px' }}>
-                      ROI: <strong>9.40% p.a.</strong> • Zero Prepayment Penalty
-                    </div>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#334155' }}>₹1,12,890/mo</div>
-                    <div style={{ fontSize: '0.7rem', color: '#64748b' }}>Sanction in 3 days</div>
-                  </div>
-                </div>
+                  {/* Screen Header */}
+                  <h3 className="ref-phone-title">Your Loan Journey</h3>
 
-                {/* Offer 3 */}
-                <div
-                  style={{
-                    border: '1px solid #e2e8f0',
-                    borderRadius: '12px',
-                    padding: '12px 14px',
-                    background: '#ffffff',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <div>
-                    <div style={{ fontWeight: 600, color: '#334155', fontSize: '0.9rem' }}>Fast-Track NBFC</div>
-                    <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '2px' }}>
-                      ROI: <strong>10.25% p.a.</strong> • Minimal Documentation
-                    </div>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#334155' }}>₹1,14,750/mo</div>
-                    <div style={{ fontSize: '0.7rem', color: '#d97706', fontWeight: 600 }}>Disbursal in 24 hrs</div>
+                  {/* 5 Journey Checklist Cards */}
+                  <div className="ref-phone-checklist">
+                    {journeySteps.map((step) => (
+                      <div
+                        key={step.id}
+                        className="ref-phone-step-card"
+                      >
+                        <div className="ref-step-check-icon">
+                          <CheckCircle2 size={20} color="#10b981" fill="#ecfdf5" />
+                        </div>
+                        <span className="ref-step-label">{step.title}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              {/* Bottom Guarantee */}
-              <div
-                style={{
-                  background: '#f8fafc',
-                  borderRadius: '10px',
-                  padding: '10px 14px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  border: '1px solid #e2e8f0',
-                }}
-              >
-                <ShieldCheck size={18} color="#059669" style={{ flexShrink: 0 }} />
-                <span style={{ fontSize: '0.775rem', color: '#475569', lineHeight: 1.4 }}>
-                  <strong>CIBIL Protection Guarantee:</strong> Soft inquiries do not reduce your credit score. Zero unsolicited sales calls.
-                </span>
+              {/* Borrower Cutout Image (Right Foreground) */}
+              <div className="ref-hero-man-cutout-wrap">
+                <img
+                  src="/borrower_man_cutout.png?v=hero2"
+                  alt="Borrower checking approved loan offers on mobile"
+                  className="ref-hero-man-cutout-img"
+                  loading="eager"
+                />
+                <div className="ref-man-status-badge">
+                  <CheckCircle2 size={13} color="#10b981" />
+                  <span>Approved in 2 mins</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Subtle Scroll Cue to Why Choose Us */}
+        <div className="ref-hero-scroll-cue">
+          <a
+            href="#why-choose"
+            onClick={handleScrollToWhyChoose}
+            className="ref-scroll-cue-link"
+            aria-label="Scroll down to Why Choose Us"
+          >
+            <span>Your simple platform to explore and connect with financial solutions. </span>
+          </a>
+        </div>
       </div>
+
+      {/* ================= FAST-TRACK DIGITAL LOAN REQUEST MODAL ================= */}
+      {isModalOpen && (
+        <div className="cb-loan-modal-overlay" onClick={() => setIsModalOpen(false)}>
+          <div className="cb-loan-modal-dialog" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="cb-loan-modal-close"
+              onClick={() => setIsModalOpen(false)}
+              aria-label="Close"
+            >
+              <X size={20} />
+            </button>
+
+            {!isSubmitted ? (
+              <>
+                <div className="cb-loan-modal-header">
+                  <div className="cb-loan-modal-pill">
+                    <span className="cb-info-icon-badge" aria-hidden="true">
+                      <Info size={14} color="#2563eb" />
+                    </span>
+                    <span>Fast Digital Check</span>
+                  </div>
+                  <h3 className="cb-loan-modal-title">Check Your Loan Offers</h3>
+                  <p className="cb-loan-modal-desc">
+                    Compare personalized loan offers from 25+ lenders with zero impact on your credit score.
+                  </p>
+                </div>
+
+                <form onSubmit={handleModalSubmit} className="cb-loan-modal-form">
+                  <div className="cb-modal-field">
+                    <label>Select Loan Type</label>
+                    <div className="cb-modal-types-row">
+                      {loanCategories.map((cat) => (
+                        <button
+                          key={cat}
+                          type="button"
+                          onClick={() => setLoanCategory(cat)}
+                          className={`cb-modal-type-chip ${loanCategory === cat ? 'active' : ''}`}
+                        >
+                          {cat}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="cb-modal-field">
+                    <label>Loan Amount Required</label>
+                    <div className="cb-modal-input-wrap">
+                      <span className="cb-modal-prefix">₹</span>
+                      <input
+                        type="text"
+                        placeholder="e.g. 5,00,000"
+                        value={loanAmount}
+                        onChange={(e) => setLoanAmount(e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="cb-modal-grid-2">
+                    <div className="cb-modal-field">
+                      <label>Full Name</label>
+                      <input
+                        type="text"
+                        placeholder="As per PAN card"
+                        className="cb-modal-input-std"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        required
+                      />
+                    </div>
+
+                    <div className="cb-modal-field">
+                      <label>Mobile Number</label>
+                      <div className="cb-modal-input-wrap">
+                        <span className="cb-modal-prefix">+91</span>
+                        <input
+                          type="tel"
+                          maxLength={10}
+                          placeholder="10-digit mobile"
+                          value={mobileNumber}
+                          onChange={(e) =>
+                            setMobileNumber(e.target.value.replace(/\D/g, ''))
+                          }
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="cb-modal-submit-btn"
+                  >
+                    <span>{isSubmitting ? 'Comparing 50+ Banks...' : 'See Best Loan Offers →'}</span>
+                  </button>
+
+                  <div className="cb-modal-security-note">
+                    <Lock size={12} color="#16a34a" />
+                    <span>256-bit Bank Grade Security • Zero Broker Commission • 100% Free</span>
+                  </div>
+                </form>
+              </>
+            ) : (
+              <div className="cb-modal-success-screen">
+                <div className="cb-modal-success-icon">
+                  <CheckCircle2 size={50} color="#10b981" />
+                </div>
+                <h3>Loan Request Initiated!</h3>
+                <p>
+                  Thank you, <strong>{fullName || 'Borrower'}</strong>! We are fetching customized {loanCategory} sanction offers for your amount of ₹{loanAmount}.
+                </p>
+                <div className="cb-modal-success-box">
+                  <div>Estimated Disbursal: <strong>Within 15–24 Hours</strong></div>
+                  <div>Partner Network: <strong>SBI, HDFC, ICICI, Axis + 46 more</strong></div>
+                  <div>Zero CIBIL Impact: <strong>Soft match leaves credit score untouched</strong></div>
+                </div>
+                <a
+                  href={CHECKOUT_WEBSITE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cb-modal-submit-btn"
+                  style={{ textDecoration: 'none', marginTop: 16 }}
+                >
+                  <span>Continue on Fast-Track Portal →</span>
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 };
+
+export default LeadPartnerHero;

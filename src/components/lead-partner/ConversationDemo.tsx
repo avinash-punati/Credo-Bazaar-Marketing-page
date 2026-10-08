@@ -3,13 +3,12 @@ import {
   CheckCheck,
   Shield,
   RotateCcw,
-  Sparkles,
   Info,
 } from 'lucide-react';
 
 interface ChatMessage {
   id: number;
-  sender: 'Vikram (Business Owner)' | 'Credo Bazaar Credit Advisor';
+  sender: 'Rahul (Personal & Home Loan Borrower)' | 'Credo Bazaar Credit Advisor';
   role: 'borrower' | 'advisor';
   text: string;
   time: string;
@@ -20,50 +19,50 @@ export const ConversationDemo: React.FC = () => {
   const allMessages: ChatMessage[] = [
     {
       id: 1,
-      sender: 'Vikram (Business Owner)',
+      sender: 'Rahul (Personal & Home Loan Borrower)',
       role: 'borrower',
-      text: 'Hi, I need ₹60 Lakhs working capital for my manufacturing unit. My local DSA is pushing a 14.2% rate with a 2% upfront commission. Can Credo Bazaar help me get better terms?',
+      text: 'Hi, I need a ₹15 Lakhs Personal Loan for home renovation and family expenses. My local DSA is pushing a 14.5% rate with high processing fees. Can Credo Bazaar help me get better terms?',
       time: '10:14 AM',
     },
     {
       id: 2,
       sender: 'Credo Bazaar Credit Advisor',
       role: 'advisor',
-      text: 'Hello Vikram! Yes, definitely. Offline brokers often push lenders that pay them the highest commission. On Credo Bazaar, we match your GST turnover and banking health across 50+ institutional lenders with zero agent bias. You qualify for prime MSME rates starting at 9.20% p.a.',
+      text: 'Hello Rahul! Absolutely. Offline brokers often push lenders that pay them the highest commission. On Credo Bazaar, we match your salary profile directly across 50+ institutional banks and NBFCs with zero broker bias. You qualify for prime Personal Loan rates starting at 10.49% p.a.',
       time: '10:15 AM',
     },
     {
       id: 3,
-      sender: 'Vikram (Business Owner)',
+      sender: 'Rahul (Personal & Home Loan Borrower)',
       role: 'borrower',
-      text: "Will comparing across multiple lenders hurt my CIBIL score? My DSA warned me about multiple hits.",
+      text: "Will comparing across multiple lenders hurt my CIBIL score? My agent warned me against multiple inquiries.",
       time: '10:16 AM',
     },
     {
       id: 4,
       sender: 'Credo Bazaar Credit Advisor',
       role: 'advisor',
-      text: "That CIBIL damage only happens when offline DSAs circulate your physical file across branches. Credo Bazaar runs an initial AI soft match with zero credit score impact. You only trigger one formal inquiry when you choose your winning sanction.",
+      text: "Not at all! That only happens when offline DSAs circulate your physical file across branches. Credo Bazaar runs an initial AI soft eligibility match with zero credit score impact. You only trigger one formal inquiry when you choose your winning sanction.",
       time: '10:17 AM',
     },
     {
       id: 5,
-      sender: 'Vikram (Business Owner)',
+      sender: 'Rahul (Personal & Home Loan Borrower)',
       role: 'borrower',
-      text: 'That will save me more than ₹2.5 Lakhs in interest and fees! How do I submit my request?',
+      text: 'That will save me more than ₹70,000 in interest and charges! Also, can I explore Home Loan options here when I purchase a flat next month?',
       time: '10:18 AM',
     },
     {
       id: 6,
       sender: 'Credo Bazaar Credit Advisor',
       role: 'advisor',
-      text: 'Just checkout our website below, complete the 2-minute request form, and review pre-sanction offers from top banks & NBFCs.',
+      text: 'Yes! We offer pre-approved Home Loans starting from 8.35% p.a. with flexible tenures up to 30 years. Just checkout our website below, complete the 2-minute request form, and review pre-sanction offers from top banks & NBFCs.',
       time: '10:19 AM',
       hasLinkCard: true,
     },
     {
       id: 7,
-      sender: 'Vikram (Business Owner)',
+      sender: 'Rahul (Personal & Home Loan Borrower)',
       role: 'borrower',
       text: 'Checking it out right now. Thanks for the transparent guidance!',
       time: '10:20 AM',
@@ -100,10 +99,6 @@ export const ConversationDemo: React.FC = () => {
       <div className="cb-container">
         {/* Section Header */}
         <div className="cb-section-header">
-          <div className="cb-pill cb-pill-blue">
-            <Sparkles size={14} />
-            <span>Real-World Scenario</span>
-          </div>
           <h2 className="cb-section-title">See How Credo Bazaar Solves the Borrower Dilemma</h2>
           <p className="cb-section-subtitle">
             An inside look at how borrowers transition from high-interest broker pitches to transparent institutional sanctions.
